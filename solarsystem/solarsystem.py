@@ -89,7 +89,14 @@ while True:
     rocket_x = 400 + a * math.cos(t * rocket_speed)  # Elliptical x position - AI - Cursor
     rocket_y = 300 + b * math.sin(t * rocket_speed)  # Elliptical y position - AI - Cursor
 
+    # Calculate rocket angle to face the direction it is travelling - AI - Cursor
+    rocket_angle = math.atan2(b * math.sin(t * rocket_speed), a * math.cos(t * rocket_speed))  # AI - Cursor
+
     # Draw rocket - AI - Cursor
-    pygame.draw.rect(screen, rocket_color, (int(rocket_x), int(rocket_y), rocket_width, rocket_height))  # AI - Cursor
+    rocket_rect = pygame.Rect(0, 0, rocket_width, rocket_height)  # AI - Cursor
+    rocket_rect.center = (int(rocket_x), int(rocket_y))  # AI - Cursor
+    rotated_rocket = pygame.transform.rotate(pygame.Surface((rocket_width, rocket_height)), -math.degrees(rocket_angle))  # AI - Cursor
+    rotated_rocket.fill(rocket_color)  # AI - Cursor
+    screen.blit(rotated_rocket, rotated_rocket.get_rect(center=rocket_rect.center))  # AI - Cursor
 
     pygame.display.flip()
