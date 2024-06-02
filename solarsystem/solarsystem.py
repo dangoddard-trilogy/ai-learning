@@ -76,4 +76,18 @@ while True:
         pygame.draw.circle(screen, planet["color"], (int(planet_x), int(planet_y)), planet["radius"])  # AI - Cursor
 
 
+    # Define rocket properties - AI - Cursor
+    rocket_color = (255, 255, 255)  # White color for the rocket - AI - Cursor
+    rocket_width = 10  # Width of the rocket - AI - Cursor
+    rocket_height = 30  # Height of the rocket - AI - Cursor
+    rocket_speed = 0.2  # Speed of the rocket - AI - Cursor
+
+    # Calculate rocket position - AI - Cursor
+    rocket_x = 400 + 100 * math.cos(pygame.time.get_ticks() / 1000 * rocket_speed)  # AI - Cursor
+    rocket_y = 300 + 100 * math.sin(pygame.time.get_ticks() / 1000 * rocket_speed)  # AI - Cursor
+
+    # Draw rocket - AI - Cursor
+    pygame.draw.rect(screen, rocket_color, (int(rocket_x), int(rocket_y), rocket_width, rocket_height))  # AI - Cursor
+
+
     pygame.display.flip()
