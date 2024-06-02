@@ -82,12 +82,14 @@ while True:
     rocket_height = 30  # Height of the rocket - AI - Cursor
     rocket_speed = 0.2  # Speed of the rocket - AI - Cursor
 
-    # Calculate rocket position - AI - Cursor
-    rocket_x = 400 + 100 * math.cos(pygame.time.get_ticks() / 1000 * rocket_speed)  # AI - Cursor
-    rocket_y = 300 + 100 * math.sin(pygame.time.get_ticks() / 1000 * rocket_speed)  # AI - Cursor
+    # Calculate rocket position for non-circular orbit (e.g., elliptical) - AI - Cursor
+    t = pygame.time.get_ticks() / 1000  # Time in seconds - AI - Cursor
+    a = 150  # Semi-major axis - AI - Cursor
+    b = 100  # Semi-minor axis - AI - Cursor
+    rocket_x = 400 + a * math.cos(t * rocket_speed)  # Elliptical x position - AI - Cursor
+    rocket_y = 300 + b * math.sin(t * rocket_speed)  # Elliptical y position - AI - Cursor
 
     # Draw rocket - AI - Cursor
     pygame.draw.rect(screen, rocket_color, (int(rocket_x), int(rocket_y), rocket_width, rocket_height))  # AI - Cursor
-
 
     pygame.display.flip()
