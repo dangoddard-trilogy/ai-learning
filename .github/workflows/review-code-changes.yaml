@@ -34,9 +34,9 @@ jobs:
           echo "commit_sha=$(jq -r '.pull_request.head.sha' "$GITHUB_EVENT_PATH")" >> $GITHUB_ENV  # Use head SHA for unmerged PR
 
       # Run the Python script
-      - name: Generate Updated README
+      - name: Do Code Review
         env:
-          GROQ_API_KEY: ${{ secrets.GROK_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.AI_GITHUB_TOKEN }}
           REPO_PATH: ${{ github.repository }}
           PR_NUM: ${{ env.pr_num }}
